@@ -1,19 +1,35 @@
 package com.lab.entity;
 
-public class Oval {
+import java.util.Observable;
+import java.util.UUID;
+
+@SuppressWarnings("deprecation")
+public class Oval extends Observable{
     private final long id;
-    private final Point point1;
-    private final Point point2;
+    private Point pointX;
+    private Point pointY;
 
     public Oval(Point p1, Point p2) {
-        this.id = System.currentTimeMillis();
-        this.point1 = p1;
-        this.point2 = p2;
+        this.id = UUID.randomUUID().getLeastSignificantBits();
+        this.pointX = p1;
+        this.pointY = p2;
     }
 
     public long getId() { return id; }
-    public Point getPoint1() { return point1; }
-    public Point getPoint2() { return point2; }
+    public Point getPointX() { return pointX; }
+    public Point getPointY() { return pointY; }
+
+    public void setPointX(Point pointX) {
+        this.pointX = pointX;
+        this.setChanged();
+        this.notifyObservers();
+    }
+    public void setPointY(Point pointY) {
+        this.pointY = pointY;
+        this.setChanged();
+        this.notifyObservers();
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -32,8 +48,18 @@ public class Oval {
     public String toString() {
         return "Oval{" +
                 "id=" + id +
-                ", point1=" + point1 +
-                ", point2=" + point2 +
+                ", point1=" + pointX +
+                ", point2=" + pointY +
                 '}';
+    }
+
+    @Override
+    public void addObserver(java.util.Observer o) {
+        super.addObserver(o);
+    }
+
+    @Override
+    public void deleteObserver(java.util.Observer o) {
+        super.deleteObserver(o);
     }
 }
