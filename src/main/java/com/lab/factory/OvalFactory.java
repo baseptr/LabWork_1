@@ -4,7 +4,6 @@ package com.lab.factory;
 import com.lab.entity.Oval;
 import com.lab.entity.Point;
 import com.lab.exception.InvalidShapeException;
-import com.lab.pool.ShapeWarehouse;
 import com.lab.validator.OvalValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

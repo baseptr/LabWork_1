@@ -80,8 +80,8 @@ public class ShapeWarehouse implements java.util.Observer{
     }
 
     // Метод для получения всех данных (может быть полезен для отладки)
-    public Map<Long, OvalMetrics> getAllData() {
+   /* public Map<Long, OvalMetrics> getAllData() {
         return new HashMap<>(data); // Возвращаем копию
-    }
+    }*/
 
 }

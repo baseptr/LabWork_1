@@ -54,7 +54,7 @@ public class OvalServiceTest {
     public Object[][] perimeterTestDataProvider() {
         // Овал с p1=(0,0), p2=(2,4) -> a=1, b=2 -> P ≈ 2*PI*sqrt((1+4)/2) = 2*PI*sqrt(2.5)
         Oval oval1 = new Oval(new Point(0, 0), new Point(2, 4));
-        double expectedP1 = 2.0 * Math.PI * Math.sqrt((1.0*1.0 + 2.0*2.0) / 2.0);
+        double expectedP1 = 2.0 * Math.PI * Math.sqrt((1.0 + 2.0*2.0) / 2.0);
         // Круг с p1=(0,0), p2=(2,2) -> a=1, b=1 -> P ≈ 2*PI*sqrt((1+1)/2) = 2*PI*1 = 2*PI
         Oval oval2 = new Oval(new Point(0, 0), new Point(2, 2));
         double expectedP2 = 2.0 * Math.PI; // Точная формула для круга 2*PI*R
