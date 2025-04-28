@@ -6,8 +6,7 @@ public class InvalidShapeException extends Exception {
         super(message);
     }
 
-    public InvalidShapeException(String message, NumberFormatException n) {
-        super(message);
-        System.out.println(n.getMessage());
+    public InvalidShapeException(String message, Throwable cause) {
+        super(message, cause);
     }
 }

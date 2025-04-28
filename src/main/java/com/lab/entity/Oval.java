@@ -4,7 +4,7 @@ import java.util.Observable;
 import java.util.UUID;
 
 @SuppressWarnings("deprecation")
-public class Oval extends Observable{
+public class Oval extends Observable {
     private final long id;
     private Point pointX;
     private Point pointY;
@@ -15,15 +15,24 @@ public class Oval extends Observable{
         this.pointY = p2;
     }
 
-    public long getId() { return id; }
-    public Point getPointX() { return pointX; }
-    public Point getPointY() { return pointY; }
+    public long getId() {
+        return id;
+    }
+
+    public Point getPointX() {
+        return pointX;
+    }
+
+    public Point getPointY() {
+        return pointY;
+    }
 
     public void setPointX(Point pointX) {
         this.pointX = pointX;
         this.setChanged();
         this.notifyObservers();
     }
+
     public void setPointY(Point pointY) {
         this.pointY = pointY;
         this.setChanged();
