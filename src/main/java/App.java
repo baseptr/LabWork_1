@@ -16,7 +16,7 @@ public class App {
     // Путь к файлу относительно корня проекта (например, если файл лежит в папке data)
     private static final String OVAL_DATA_FILE = "src/main/resources/ovals.txt";
     public static void main(String[] args) {
-        logger.info("Application starting...");
+        logger.info("Запуск приложения...");
 
         ShapeRepository repository = new ShapeRepository(); // Создаем репозиторий
 
@@ -25,13 +25,13 @@ public class App {
         try {
             lines = FileReader.readLines(OVAL_DATA_FILE);
         } catch (IOException | IllegalArgumentException e) { // Ловим ошибки чтения и невалидного пути
-            logger.error("Failed to read data file '{}': {}", OVAL_DATA_FILE, e.getMessage(), e);
-            logger.error("Application cannot continue without data. Exiting.");
+            logger.error("Ошибка чтения файла данных '{}': {}", OVAL_DATA_FILE, e.getMessage(), e);
+            logger.error("Приложение не может продолжить работу без данных. Завершение.");
             return; // Завершаем работу
         }
 
         // --- Обработка строк и создание овалов ---
-        logger.info("Processing {} lines from file...", lines.size());
+        logger.info("Обработка {} строк из файла...", lines.size());
         int successfulCreations = 0;
         int failedCreations = 0;
         int skippedLines = 0;
@@ -41,14 +41,14 @@ public class App {
             int lineNumber = i + 1; // Номер строки для логов
 
             if (line == null || line.trim().isEmpty()) {
-                logger.trace("Skipping empty or blank line at #{}", lineNumber);
+                logger.trace("Пропуск пустой строки #{}", lineNumber);
                 skippedLines++;
                 continue; // Пропускаем пустые строки
             }
 
             // Можно добавить пропуск строк с комментариями (например, начинающихся с '#')
             if (line.trim().startsWith("#")) {
-                logger.trace("Skipping comment line at #{}", lineNumber);
+                logger.trace("Пропуск строки с комментарием #{}", lineNumber);
                 skippedLines++;
                 continue;
             }
@@ -62,52 +62,52 @@ public class App {
             } catch (InvalidShapeException e) {
                 // Ловим исключение от фабрики (неверный формат, невалидная геометрия)
                 failedCreations++;
-                logger.warn("Failed to process line #{}: \"{}\". Reason: {}", lineNumber, line, e.getMessage());
+                logger.warn("Ошибка обработки строки #{}: \"{}\". Причина: {}", lineNumber, line, e.getMessage());
                 // Просто переходим к следующей строке (Требование 7)
             } catch (Exception e) {
                 // Ловим любые другие неожиданные ошибки при обработке строки
                 failedCreations++;
-                logger.error("Unexpected error processing line #{}: \"{}\"", lineNumber, line, e);
+                logger.error("Неожиданная ошибка при обработке строки #{}: \"{}\"", lineNumber, line, e);
             }
         }
 
         logger.info("--------------------------------------------------");
-        logger.info("File processing finished.");
-        logger.info("Total lines read: {}", lines.size());
-        logger.info("Successfully created Ovals: {}", successfulCreations);
-        logger.info("Failed lines (errors/invalid): {}", failedCreations);
-        logger.info("Skipped lines (empty/comments): {}", skippedLines);
-        logger.info("Ovals currently in repository: {}", repository.getAll().size());
+        logger.info("Обработка файла завершена.");
+        logger.info("Всего строк прочитано: {}", lines.size());
+        logger.info("Успешно создано овалов: {}", successfulCreations);
+        logger.info("Ошибочных строк (невалидные/ошибки): {}", failedCreations);
+        logger.info("Пропущено строк (пустые/комментарии): {}", skippedLines);
+        logger.info("Текущее количество овалов в репозитории: {}", repository.getAll().size());
         logger.info("--------------------------------------------------");
 
 
         // --- Пример использования репозитория и склада ---
         if (!repository.getAll().isEmpty()) {
-            logger.info("Example operations:");
+            logger.info("Пример операций:");
             Oval firstOval = repository.getAll().getFirst();
             long firstOvalId = firstOval.getId();
-            logger.info("Getting metrics for Oval id={}: Perimeter={}, Area={}",
+            logger.info("Получение метрик для овала id={}: Периметр={}, Площадь={}",
                     firstOvalId,
                     ShapeWarehouse.getInstance().getPerimeter(firstOvalId),
                     ShapeWarehouse.getInstance().getArea(firstOvalId));
 
             // Пример изменения овала (если он изменяемый)
-            logger.info("Changing pointX for Oval id={}", firstOvalId);
+            logger.info("Изменение точки X для овала id={}", firstOvalId);
             Point currentP1 = firstOval.getPointX();
             firstOval.setPointX(new Point(currentP1.x() + 1, currentP1.y() + 1)); // Сдвигаем точку
 
             // Проверяем, обновились ли данные в Warehouse
-            logger.info("Getting updated metrics for Oval id={}: Perimeter={}, Area={}",
+            logger.info("Получение обновлённых метрик для овала id={}: Периметр={}, Площадь={}",
                     firstOvalId,
                     ShapeWarehouse.getInstance().getPerimeter(firstOvalId),
                     ShapeWarehouse.getInstance().getArea(firstOvalId));
 
             // Пример сортировки
             List<Oval> sortedByArea = repository.sortByArea();
-            logger.info("Ovals sorted by area (first 3):");
-            sortedByArea.stream().limit(3).forEach(o -> logger.info(" - ID: {}, Area: {}", o.getId(), ShapeWarehouse.getInstance().getArea(o.getId())));
+            logger.info("Овалы, отсортированные по площади (первые 3):");
+            sortedByArea.stream().limit(3).forEach(o -> logger.info(" - ID: {}, Площадь: {}", o.getId(), ShapeWarehouse.getInstance().getArea(o.getId())));
         }
 
-        logger.info("Application finished.");
+        logger.info("Работа приложения завершена.");
     }
 }
