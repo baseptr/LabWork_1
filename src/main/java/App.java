@@ -1,10 +1,10 @@
-import com.esde.pool.ShapeWarehouse;
-import com.esde.entity.Oval;
-import com.esde.entity.Point;
-import com.esde.exception.InvalidShapeException;
-import com.esde.factory.OvalFactory;
-import com.esde.repository.ShapeRepository;
-import com.esde.service.FileReader;
+import It.esdc.shapes.pool.ShapeWarehouse;
+import It.esdc.shapes.entity.Oval;
+import It.esdc.shapes.entity.Point;
+import It.esdc.shapes.exception.InvalidShapeException;
+import It.esdc.shapes.factory.OvalFactory;
+import It.esdc.shapes.repository.ShapeRepository;
+import It.esdc.shapes.service.FileReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
