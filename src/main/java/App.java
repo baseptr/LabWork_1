@@ -1,10 +1,10 @@
-import com.lab.pool.ShapeWarehouse;
-import com.lab.entity.Oval;
-import com.lab.entity.Point;
-import com.lab.exception.InvalidShapeException;
-import com.lab.factory.OvalFactory;
-import com.lab.repository.ShapeRepository;
-import com.lab.service.FileReader;
+import com.esde.pool.ShapeWarehouse;
+import com.esde.entity.Oval;
+import com.esde.entity.Point;
+import com.esde.exception.InvalidShapeException;
+import com.esde.factory.OvalFactory;
+import com.esde.repository.ShapeRepository;
+import com.esde.service.FileReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
