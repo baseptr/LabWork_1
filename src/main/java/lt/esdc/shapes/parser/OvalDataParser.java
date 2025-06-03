@@ -4,16 +4,16 @@ import lt.esdc.shapes.entity.Point;
 import lt.esdc.shapes.exception.InvalidShapeException;
 import lt.esdc.shapes.validator.OvalDataValidator;
 import lt.esdc.shapes.validator.ShapeDataValidator;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-
 public class OvalDataParser {
 
-    private static final org.apache.logging.log4j.Logger logger =
-            org.apache.logging.log4j.LogManager.getLogger(OvalDataParser.class);
+    private static final Logger logger = LogManager.getLogger(OvalDataParser.class);
     private final ShapeDataValidator validator = new OvalDataValidator();
 
     public List<ParsedOvalData> parseLines(List<String> lines) {

@@ -42,7 +42,6 @@ public class ShapeRepository {
         return instance;
     }
 
-
     public void add(Oval oval) {
         if (oval == null) {
             logger.warn("Attempted to add a null oval.");

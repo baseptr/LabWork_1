@@ -21,12 +21,12 @@ import java.util.Scanner;
 
 public class App {
     private static final Logger logger = LogManager.getLogger(App.class);
-    private static final String OVALS_FILE_PATH = "resources/ovals.txt"; // Relative to project root
+    private static final String OVALS_FILE_PATH = "resources/ovals.txt";
 
     private final Scanner scanner;
     private final ShapeFileReader fileReader;
     private final OvalService ovalService;
-    private final OvalFactory ovalFactory; // Added for manual creation
+    private final OvalFactory ovalFactory;
     private final ShapeRepository shapeRepository;
     private final ShapeWarehouse shapeWarehouse;
 
@@ -105,17 +105,16 @@ public class App {
         System.out.println("0. Exit");
     }
 
-    // --- Input Helper Methods ---
     private int readIntInput(String prompt) {
         System.out.print(prompt);
         while (true) {
             try {
                 int value = scanner.nextInt();
-                scanner.nextLine(); // Consume newline
+                scanner.nextLine();
                 return value;
             } catch (InputMismatchException e) {
                 System.out.print("Invalid input. Please enter an integer: ");
-                scanner.nextLine(); // Consume the invalid input
+                scanner.nextLine();
             }
         }
     }
@@ -125,11 +124,11 @@ public class App {
         while (true) {
             try {
                 long value = scanner.nextLong();
-                scanner.nextLine(); // Consume newline
+                scanner.nextLine();
                 return value;
             } catch (InputMismatchException e) {
                 System.out.print("Invalid input. Please enter a long integer: ");
-                scanner.nextLine(); // Consume the invalid input
+                scanner.nextLine();
             }
         }
     }
@@ -139,11 +138,11 @@ public class App {
         while (true) {
             try {
                 double value = scanner.nextDouble();
-                scanner.nextLine(); // Consume newline
+                scanner.nextLine();
                 return value;
             } catch (InputMismatchException e) {
                 System.out.print("Invalid input. Please enter a number (e.g., 10.5): ");
-                scanner.nextLine(); // Consume the invalid input
+                scanner.nextLine();
             }
         }
     }

@@ -31,8 +31,9 @@ public record Point(double x, double y) {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Point {x = ").append(x);
-        sb.append(", y = ").append(y).append('}');
+        sb.append("Point {x = ").append(x)
+            .append(", y = ").append(y)
+            .append('}');
         return sb.toString();
     }
 }

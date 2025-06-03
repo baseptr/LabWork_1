@@ -97,10 +97,10 @@ public class Oval extends AbstractShape {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Oval {id = ").append(id);
-        sb.append(", point1 = ").append(pointX); // Renamed for clarity if they are corners
-        sb.append(", point2 = ").append(pointY);
-        sb.append('}');
+        sb.append("Oval {id = ").append(id)
+            .append(", point1 = ").append(pointX)
+            .append(", point2 = ").append(pointY)
+            .append('}');
         return sb.toString();
     }
 }

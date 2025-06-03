@@ -64,9 +64,12 @@ public class ShapeWarehouse {
         @Override
         public String toString() {
             StringBuilder bd = new StringBuilder();
-            bd.append("ShapeParameters {");
-            bd.append("area = ").append(area).append(", perimeter = ").append(perimeter);
-            bd.append("}");
+            bd.append("ShapeParameters {")
+                    .append("area = ")
+                    .append(area)
+                    .append(", perimeter = ")
+                    .append(perimeter)
+                    .append("}");
             return bd.toString();
         }
     }
